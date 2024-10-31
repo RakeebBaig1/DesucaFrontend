@@ -1,6 +1,9 @@
 @tailwind base;
+
 @tailwind components;
+
 @tailwind utilities;
+
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -18,10 +21,14 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+}
+.mainContainer {
+  display: flex ;
+  min-height: 100vh;
+  flex-direction: columns ;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6rem;
+ 
+ 
 }
