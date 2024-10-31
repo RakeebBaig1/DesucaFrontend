@@ -29,8 +29,9 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Deploy on locally
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Due to less time i cannot able to utlizie state management library , i handle state with global variabbles
+and tricky a bit with useState
+Sorry for Late submission i had office in morning
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
