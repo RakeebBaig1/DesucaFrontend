@@ -17,11 +17,12 @@ const ManagerDetail = (props: any) => {
   const [non_userList , set_non_userList] = useState()
   const [userList , set_userList] = useState()
   const [open1, setOpen1] = useState(false);
-  const [userId, setUserId] = useState(false);
+  const [userId, setUserId] = useState('');
   const [selectedManagertoChange, setSelectedManagertoChange] = useState('');
   const [mange  , setMange ] = useState([]) 
-  const handleOpen1 = (id:any) => {setOpen1(true)
-    setUserId(id)
+  const handleOpen1 = (id:any) => {
+     setUserId(id)
+    setOpen1(true)
 }
   const handleClose1 = () => {setOpen1(false)
     setUserId('')};
@@ -45,16 +46,33 @@ const ManagerDetail = (props: any) => {
     };
     fetchData(); // Call the async function
 }, []); // Empty dependency array
-const handleConfirm = () => {
+
+
+const handleManagerChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+  
+  setSelectedManagertoChange(event.target.value as string)
+
+};
+
+const handleConfirm = async () => {
     // Add logic for confirming the manager change, e.g., API call or state update
-    console.log('Selected Manager:', selectedManagertoChange);
-   
+    console.log('Selected Manager:', typeof(userId));
+    let res =  await changeManager(selectedManagertoChange, userId)
+   let res2 = await GetUsersFormanager(id)
+   let res3 = await GetOtherUsersFormanager(id)
+    console.log(res)
+   set_userList(res2)
+   set_non_userList(res3)
     handleClose1();
   };
 const handleAssignUser = async (userId:any) => {
     try {
       let res =  await changeManager(id, userId)
+      let res2 = await GetUsersFormanager(id)
+      let res3 = await GetOtherUsersFormanager(id)
       console.log(res)
+      set_userList(res2)
+      set_non_userList(res3)
       
     } catch (error) {
         console.error('Failed to assign user', error);
@@ -101,7 +119,7 @@ const handleAssignUser = async (userId:any) => {
             <InputLabel>Select Manager</InputLabel>
             <Select
               value={selectedManagertoChange}
-              onChange={(e) => setSelectedManagertoChange(e.target.value)}
+              onChange={handleManagerChange}
               label="Select Manager"
             >
               {/* Replace these options with dynamic data as needed */}

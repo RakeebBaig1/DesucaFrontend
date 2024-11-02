@@ -85,7 +85,7 @@ export async function Getmanager(id:any) {
  export async function changeManager(mid: any ,uid: any) {
 
     try {
-        console.log('Calling Register User APi')
+        console.log('Calling Change Maanager',mid,'User Id ',uid)
         const response = await axios.post('http://localhost:9000/api/admin/assignNewManager', {
             userid : uid,
             managerid : mid,
@@ -218,7 +218,7 @@ export async function Getmanager(id:any) {
  export async function GetUsersFormanager(mid:any) {
 
     try {
-        console.log('Calling User List APi')
+        console.log('Calling Get Users List APi for Manager')
         const response = await axios.post('http://localhost:9000/api/admin/getUserlistForManager', {
             mid,
           });
@@ -234,7 +234,7 @@ export async function Getmanager(id:any) {
  export async function GetOtherUsersFormanager(mid:any) {
 
     try {
-        console.log('Calling User List APi')
+        console.log('Calling Other Users List  for Free USers APi')
         const response = await axios.post('http://localhost:9000/api/admin/getUser_unassign_Manager', {
             mid,
           });
@@ -250,7 +250,7 @@ export async function Getmanager(id:any) {
  export async function AssignToManager(mid:any,uid:any) {
 
     try {
-        console.log('Calling User List APi')
+        console.log('Calling Assign To Manager Api ')
         const response = await axios.post('http://localhost:9000/api/admin/getUser_unassign_Manager', {
             mid,
             uid,
